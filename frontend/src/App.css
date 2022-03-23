@@ -77,6 +77,8 @@ a:hover {
   font-weight: 400;
 }
 
+.right { padding: 1rem; }
+
 .right .copy {
   color: black;
   text-align: center;
