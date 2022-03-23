@@ -1,8 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const Tenant = require("../models/tenantModel.js")
 
-// TODO: Get Single Contact - Associated with the current user
-// TODO: Update Contact - Associated with the current user
+// TODO: Update Tenant - Associated with the current user
 
 // @desc    Fetch all tenants
 // @route   GET /api/tenants
@@ -78,11 +77,20 @@ const updateTenant = asyncHandler(async (req, res) => {
         throw new Error("Tenant not found");
     }
 });
+
+// @desc    Fetch Current User tenant
+// @route   GET /api/tenants/me
+// @access  Public Admin
+const getUserTenant = asyncHandler(async (req, res) => {
+    const tenants = await Tenant.find({userId: req.user._id});
+    res.json(tenants);
+});
   
 
 module.exports = {
     getTenants,
     getTenantById,
     createTenant,
-    updateTenant
+    updateTenant,
+    getUserTenant
 }

@@ -8,6 +8,8 @@ const connectDB = require('./config/db')
 
 const userRoutes = require('./routes/userRoutes')
 const tenantRoutes = require('./routes/tenantRoutes')
+const accountRoutes = require('./routes/accountRoutes')
+const propertyRoutes = require('./routes/propertyRoutes')
 
 connectDB()
 
@@ -26,6 +28,8 @@ router.get("/", function (req, res) {
 // ROUTES
 app.use("/api/users", userRoutes);
 app.use("/api/tenants", tenantRoutes);
+app.use("/api/accounts", accountRoutes);
+app.use("/api/properties", propertyRoutes);
 
 // Error Middleware
 app.use(notFound);
