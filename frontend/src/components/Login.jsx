@@ -28,6 +28,13 @@ const Login = () => {
                     </section>
                 </div>
                 <div className="right">
+                    <div className="logo">
+                        <img src="home.png" alt="" />
+                        <div>
+                            <h2>Green Homes</h2>
+                            <span>Sustainable living for everyone.</span>
+                        </div>
+                    </div>
                     {form === "signin" && <SignIn /> }
                     {form === "signup" && <SignUp /> }
                 </div>
