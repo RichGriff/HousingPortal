@@ -2,6 +2,7 @@ const express = require('express')
 const colors = require('colors')
 const path = require("path")
 const dotenv = require('dotenv').config()
+const cors = require('cors')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 
 const connectDB = require('./config/db')
@@ -15,6 +16,8 @@ connectDB()
 
 const app = express()
 const router = express.Router();
+
+app.use(cors())
 
 app.use(express.json());
 

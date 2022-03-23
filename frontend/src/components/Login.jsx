@@ -7,12 +7,10 @@ const Login = () => {
     const [form, setForm] = useState("signin")
 
     const switchToSignUp = () => {
-        console.log('Switch to sign up')
         setForm("signup")
     }
 
     const switchToSignIn = () => {
-        console.log('Switch to sign in')
         setForm("signin")
     }
 

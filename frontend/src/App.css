@@ -15,7 +15,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400
+  font-weight: 400;
 }
 
 h1 {
@@ -138,10 +138,21 @@ form input[type="password"] {
   width: 100%;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1px solid #c4c4c4;
+  /* border: 1px solid #c4c4c4; */
+  border:none;
   padding: 1em;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
+  background-color:hsl(0, 5%, 97%)
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus
+{
+  outline: none !important;
+  border:1px solid var(--primary-color-400);
+  box-shadow: 0 0 10px hsl(0, 0%, 80%)
 }
 
 label {
