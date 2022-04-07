@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { LoginContext } from './LoginContext';
+import { LoginContext } from '../context/LoginContext';
 import { motion } from 'framer-motion'
 
 const SignUp = () => {

@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
-import { LoginContext } from "./LoginContext";
+import { LoginContext } from "../context/LoginContext";
 import { motion } from 'framer-motion'
 import { UserSignIn } from '../data/user'
+import { UserContext } from '../context/UserContext';
 
 const SignIn = () => {
     const { switchToSignUp } = useContext(LoginContext);
@@ -9,12 +10,11 @@ const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const { fetchUser } = useContext(UserContext)
+
     const handleLoginSubmit = async (e) => {
         e.preventDefault()
-        const userData = await UserSignIn(email, password)
-        if(userData) {
-            setUser(userData)
-        }
+        fetchUser(email, password)
     }
 
     const handleEmailChange = (e) => {
@@ -34,7 +34,7 @@ const SignIn = () => {
             <form>
                 <section className="copy">
                     <h2>Sign In</h2>
-                    <p className="tagline">Let's see what we can help with today.</p>
+                    <p className="tagline">Let's see what we can help you with today.</p>
                 </section>
                 <div className="input-container">
                     <label htmlFor="email">Email</label>

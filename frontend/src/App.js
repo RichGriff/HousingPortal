@@ -1,12 +1,12 @@
-import './App.css';
-import Login from './components/Login';
-
+import './App.scss';
+import Main from './components/Main';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <UserProvider>
+        <Main />
+    </UserProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LoginContext } from './LoginContext'
+import { LoginContext } from '../context/LoginContext'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 
