@@ -9,12 +9,18 @@ const SignIn = () => {
     const [user, setUser] = useState(null)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState(null)
 
     const { fetchUser } = useContext(UserContext)
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault()
-        fetchUser(email, password)
+        if(email == '' || password == '' ) {
+            setError("Please provide an Email address and Password")
+        } else {
+            const {error} = await fetchUser(email, password)
+            if(error) setError(error)
+        }
     }
 
     const handleEmailChange = (e) => {
@@ -44,6 +50,9 @@ const SignIn = () => {
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" required value={password} onChange={handlePasswordChange}/>
                 </div>
+                {error && (
+                    <p style={{color:'red'}}>{error}</p>
+                )}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     className="signin-btn" 

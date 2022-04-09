@@ -1,47 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
-
-import { images } from '../../constants';
 import './Navbar.scss';
+import { UserContext } from '../../context/UserContext';
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const { user, userLogout } = useContext(UserContext)
+    
+  const handleLogout = (e) => {
+      e.preventDefault()
+      userLogout()
+  }
 
   return (
-    <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <img src={images.home} alt="logo" />
-      </div>
-      <ul className="app__navbar-links">
-        {['home', 'about', 'work', 'skills', 'contact'].map((item) => (
-          <li className="app__flex p-text" key={`link-${item}`}>
-            <div />
-            <a href={`#${item}`}>{item}</a>
-          </li>
-        ))}
-      </ul>
+    <nav className="navbar">
+      <div className="navbar__container">
+        {/* Logo - Brand */}
+        <div className="navbar__logo">
+          <h3>Housing Portal</h3>
+        </div>
 
-      <div className="app__navbar-menu">
-        {/* <HiMenuAlt4 onClick={() => setToggle(true)} /> */}
+        {/* Navigation Menu */}
+        <ul className="navbar__links">
+          {['Dashboard', 'My Home', 'My Account'].map((item) => (
+            <li className="app__flex p-text" key={`link-${item}`}>
+              <a href={`#${item}`}>{item}</a>
+            </li>
+          ))}
+        </ul>
 
-        {toggle && (
-          <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: 'easeOut' }}
-          >
-            {/* <HiX onClick={() => setToggle(false)} /> */}
-            <ul>
-              {['home', 'about', 'work', 'skills', 'contact'].map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
+        {/* Logout Button */}
+        <button className='btn' onClick={handleLogout}>Logout</button>
       </div>
     </nav>
   );

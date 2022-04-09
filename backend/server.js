@@ -1,5 +1,4 @@
 const express = require('express')
-const colors = require('colors')
 const path = require("path")
 const dotenv = require('dotenv').config()
 const cors = require('cors')

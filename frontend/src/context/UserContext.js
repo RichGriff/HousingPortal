@@ -16,10 +16,12 @@ export function UserProvider({ children }) {
     })
 
     async function fetchUser(email, password) {
-        const userData = await UserSignIn(email, password)
-        if(userData) {
-            setUser(userData)
-            localStorage.setItem("User", JSON.stringify(userData));
+        const {error, data} = await UserSignIn(email, password)
+        if(error) return {error, data: null}
+        if(data) {
+            setUser(data)
+            localStorage.setItem("User", JSON.stringify(data));
+            return {error: null, data}
         }
     }
 
